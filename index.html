@@ -25,7 +25,2288 @@
             createSoundWave(window.innerWidth/2, window.innerHeight/2);
             setTimeout(() => {
                 showNotification('✅ Diagnósticos quânticos concluídos - Sistema V11 perfeito!', 'success');
+                deactivateAudioEffects();<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS AI • Acesso Seguro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        
+        * {
+            font-family: 'Orbitron', monospace;
+        }
+        
+        @keyframes gentle-glow {
+            0%, 100% { 
+                opacity: 0.9;
+                transform: translateY(0px);
+            }
+            50% { 
+                opacity: 1;
+                transform: translateY(-1px);
+            }
+        }
+        
+        @keyframes float-simple {
+            0%, 100% { 
+                transform: translateY(0px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+            50% { 
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            }
+        }
+        
+        @keyframes gentle-glow {
+            0% {
+                filter: brightness(1) hue-rotate(0deg);
+            }
+            100% {
+                filter: brightness(1.1) hue-rotate(15deg);
+            }
+        }
+        
+        @keyframes scan-line {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #00ffff; }
+        }
+        
+        .hologram-effect {
+            background: rgba(0, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .neon-border {
+            border: 1px solid #00ffff;
+        }
+        
+        .luxury-card {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: float-simple 6s ease-in-out infinite;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .luxury-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            border-color: rgba(0, 255, 255, 0.6);
+        }
+        
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0f1c 0%, #1e293b 50%, #0a0f1c 100%);
+            animation: subtle-shift 15s ease-in-out infinite;
+        }
+        
+        @keyframes subtle-shift {
+            0%, 100% {
+                background: linear-gradient(135deg, #0a0f1c 0%, #1e293b 50%, #0a0f1c 100%);
+            }
+            50% {
+                background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #0f1419 100%);
+            }
+        }
+        
+        .glass-morphism {
+            background: rgba(15, 23, 42, 0.3);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .text-hologram {
+            background: linear-gradient(45deg, #00ffff, #0080ff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: simple-gradient 3s ease-in-out infinite;
+        }
+        
+        @keyframes simple-gradient {
+            0%, 100% { 
+                background-position: 0% 50%;
+            }
+            50% { 
+                background-position: 100% 50%;
+            }
+        }
+        
+        .neural-input {
+            background: rgba(20, 20, 40, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .neural-input:focus {
+            border-color: rgba(0, 255, 255, 0.8);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            outline: none;
+            transform: translateY(-2px);
+        }
+        
+        .neural-button {
+            background: linear-gradient(135deg, #00ffff 0%, #0080ff 100%);
+            border: 1px solid rgba(0, 255, 255, 0.6);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .neural-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border-color: rgba(0, 255, 255, 1);
+        }
+        
+        .typing-effect {
+            overflow: hidden;
+            border-right: 2px solid #00ffff;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink 1s infinite;
+        }
+        
+        .security-grid {
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* Professional Editor Styles */
+        .editor-active .profile-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .editor-active .profile-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            border: 2px solid #00ffff;
+        }
+        
+        .profile-card.selected {
+            border: 3px solid #00ff00 !important;
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.6) !important;
+            transform: translateY(-8px) scale(1.05) !important;
+        }
+        
+        .editor-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px dashed rgba(0, 255, 255, 0.5);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            font-size: 12px;
+        }
+        
+        .editor-active .profile-card:hover .editor-overlay {
+            opacity: 1;
+        }
+        
+        .editor-panel {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 350px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
+        
+        .editor-toolbar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
+        
+        .tool-button {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            color: #00ffff;
+            padding: 12px 16px;
+            margin: 0 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .tool-button:hover {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.8);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        
+        .tool-button.active {
+            background: rgba(0, 255, 255, 0.3);
+            border-color: #00ffff;
+            color: white;
+        }
+        
+        .property-input {
+            background: rgba(20, 20, 40, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            width: 100%;
+            margin: 5px 0;
+            font-family: 'Orbitron', monospace;
+            font-size: 12px;
+        }
+        
+        .property-input:focus {
+            border-color: rgba(0, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            outline: none;
+        }
+        
+        .editor-section {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(15px);
+        }
+        
+        .editor-section h4 {
+            color: #00ffff;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .color-picker {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin: 10px 0;
+        }
+        
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.2);
+            border-color: white;
+        }
+        
+        .color-option.selected {
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+        
+        /* Audio Visual Effects */
+        .audio-visualizer {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: end;
+            gap: 3px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .audio-visualizer.active {
+            opacity: 1;
+        }
+        
+        .audio-bar {
+            width: 4px;
+            background: linear-gradient(to top, #00ffff, #ff00ff);
+            border-radius: 2px;
+            animation: audio-pulse 0.8s ease-in-out infinite alternate;
+        }
+        
+        .audio-bar:nth-child(1) { height: 20px; animation-delay: 0s; }
+        .audio-bar:nth-child(2) { height: 35px; animation-delay: 0.1s; }
+        .audio-bar:nth-child(3) { height: 50px; animation-delay: 0.3s; }
+        .audio-bar:nth-child(4) { height: 30px; animation-delay: 0.2s; }
+        .audio-bar:nth-child(5) { height: 45px; animation-delay: 0.4s; }
+        .audio-bar:nth-child(6) { height: 25px; animation-delay: 0.5s; }
+        .audio-bar:nth-child(7) { height: 40px; animation-delay: 0.6s; }
+        .audio-bar:nth-child(8) { height: 55px; animation-delay: 0.1s; }
+        .audio-bar:nth-child(9) { height: 35px; animation-delay: 0.8s; }
+        .audio-bar:nth-child(10) { height: 28px; animation-delay: 0.7s; }
+        
+        @keyframes audio-pulse {
+            0% { 
+                transform: scaleY(0.3);
+                opacity: 0.6;
+                filter: hue-rotate(0deg);
+            }
+            100% { 
+                transform: scaleY(1);
+                opacity: 1;
+                filter: hue-rotate(60deg);
+            }
+        }
+        
+        .sound-wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .wave-circle {
+            position: absolute;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: wave-expand 2s ease-out infinite;
+        }
+        
+        @keyframes wave-expand {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+                border-width: 3px;
+            }
+            100% {
+                width: 300px;
+                height: 300px;
+                opacity: 0;
+                border-width: 1px;
+            }
+        }
+        
+        .neural-button-enhanced {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .neural-button-enhanced::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border: 2px solid rgba(0, 255, 255, 0.6);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .neural-button-enhanced:hover::after {
+            width: 120%;
+            height: 200%;
+            opacity: 1;
+            animation: sonic-boom 0.6s ease-out;
+        }
+        
+        @keyframes sonic-boom {
+            0% { 
+                width: 100%;
+                height: 150%;
+                opacity: 1;
+                border-width: 3px;
+            }
+            50% {
+                width: 150%;
+                height: 250%;
+                opacity: 0.8;
+                border-width: 2px;
+            }
+            100% { 
+                width: 200%;
+                height: 300%;
+                opacity: 0;
+                border-width: 1px;
+            }
+        }
+        
+        .loading-sound-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-sound-effect.active {
+            opacity: 1;
+            animation: loading-pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes loading-pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                filter: hue-rotate(0deg);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                filter: hue-rotate(120deg);
+            }
+        }
+        
+        .frequency-display {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            color: #00ffff;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .frequency-display.active {
+            opacity: 1;
+        }
+        
+        .freq-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 2px 0;
+        }
+        
+        .neural-input-enhanced {
+            position: relative;
+        }
+        
+        .neural-input-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+            background-size: 200% 200%;
+            animation: input-scan 3s linear infinite;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .neural-input-enhanced:focus::before {
+            opacity: 1;
+        }
+        
+        @keyframes input-scan {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .digital-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 255, 255, 0.1) 2px,
+                    rgba(0, 255, 255, 0.1) 4px
+                );
+            animation: noise-flicker 0.1s linear infinite;
+        }
+        
+        @keyframes noise-flicker {
+            0%, 100% { opacity: 0.03; }
+            50% { opacity: 0.05; }
+        }
+    </style>
+</head>
+<body class="h-full text-white">
+    <!-- Matrix Background -->
+    <div class="matrix-bg"></div>
+    
+    <!-- Matrix Rain Effect -->
+    <div id="matrix-container" class="fixed inset-0 pointer-events-none z-0"></div>
+    
+    <!-- Security Grid -->
+    <div class="security-grid fixed inset-0 pointer-events-none z-0"></div>
+    
+    <!-- Digital Noise Effect -->
+    <div class="digital-noise"></div>
+    
+    <!-- Audio Visualizer -->
+    <div id="audioVisualizer" class="audio-visualizer">
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+    </div>
+    
+    <!-- Frequency Display -->
+    <div id="frequencyDisplay" class="frequency-display">
+        <div class="freq-line">
+            <span>FREQ:</span>
+            <span id="freqValue">440.0 Hz</span>
+        </div>
+        <div class="freq-line">
+            <span>AMP:</span>
+            <span id="ampValue">-12.3 dB</span>
+        </div>
+        <div class="freq-line">
+            <span>MODE:</span>
+            <span id="modeValue">NEURAL</span>
+        </div>
+    </div>
+    
+    <div class="min-h-full flex items-center justify-center p-8 relative z-10">
+        <!-- Login Container -->
+        <div class="luxury-card rounded-lg p-8 w-[420px] h-[650px] scan-line" style="position: relative; z-index: 2;">
+            <!-- Sound Wave Effect -->
+            <div class="sound-wave">
+                <div id="waveContainer"></div>
+            </div>
+            
+            <!-- Loading Sound Effect -->
+            <div id="loadingSoundEffect" class="loading-sound-effect">
+                <svg class="w-full h-full text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                </svg>
+            </div>
+            
+            <!-- Logo Section -->
+            <div class="text-center mb-8">
+                <div class="inline-block neon-border rounded-full p-6 mb-8 hologram-effect">
+                    <svg class="w-16 h-16 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h1 class="text-4xl font-black text-hologram mb-4 tracking-wider">
+                    NEXUS AI
+                </h1>
+                <p class="text-cyan-300 text-sm font-bold tracking-wider typing-effect">
+                    ACESSO NEURAL
+                </p>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" class="space-y-6">
+                <!-- Username Field -->
+                <div>
+                    <label class="block text-cyan-300 text-base font-bold mb-4 tracking-wider">
+                        IDENTIFICAÇÃO NEURAL
+                    </label>
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            id="username"
+                            class="neural-input neural-input-enhanced w-full px-6 py-5 rounded-xl text-white placeholder-gray-400 font-mono tracking-wide text-lg"
+                            placeholder="Digite seu ID de acesso..."
+                            required
+                        >
+                        <div class="absolute right-5 top-5">
+                            <svg class="w-6 h-6 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Password Field -->
+                <div>
+                    <label class="block text-cyan-300 text-base font-bold mb-4 tracking-wider">
+                        CHAVE DE SEGURANÇA
+                    </label>
+                    <div class="relative">
+                        <input 
+                            type="password" 
+                            id="password"
+                            class="neural-input neural-input-enhanced w-full px-6 py-5 rounded-xl text-white placeholder-gray-400 font-mono tracking-wide text-lg"
+                            placeholder="••••••••••••••••"
+                            required
+                        >
+                        <div class="absolute right-5 top-5">
+                            <svg class="w-6 h-6 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Login Button -->
+                <div class="mt-8">
+                    <button 
+                        type="submit" 
+                        class="neural-button neural-button-enhanced w-full py-6 rounded-lg text-white font-black text-xl tracking-wider hover:tracking-widest transition-all duration-300"
+                    >
+                        <div class="flex items-center justify-center">
+                            <svg class="w-7 h-7 mr-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M10 17l5-5-5-5v10z"/>
+                            </svg>
+                            INICIAR CONEXÃO NEURAL
+                        </div>
+                    </button>
+                </div>
+            </form>
+            
+            <!-- Footer Links -->
+            <div class="mt-8 text-center" style="position: relative; z-index: 10;">
+                <div class="flex justify-center space-x-8 text-base">
+                    <a href="#" class="text-cyan-400 hover:text-cyan-300 transition-all duration-300 font-bold tracking-wide hover:scale-110 hover:glow-cyan px-4 py-3 rounded-lg hover:bg-cyan-400/10 border border-transparent hover:border-cyan-400/30">
+                        Recuperar Acesso
+                    </a>
+                    <span class="text-gray-500 self-center text-xl">•</span>
+                    <a href="#" class="text-cyan-400 hover:text-cyan-300 transition-all duration-300 font-bold tracking-wide hover:scale-110 hover:glow-cyan px-4 py-3 rounded-lg hover:bg-cyan-400/10 border border-transparent hover:border-cyan-400/30">
+                        Suporte
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Side Info Panel -->
+        <div class="hidden lg:block absolute right-8 top-8 glass-morphism rounded-2xl p-6 w-80">
+            <h3 class="text-xl font-black text-cyan-400 mb-4 tracking-wider">
+                STATUS DO SISTEMA
+            </h3>
+            
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-300">Servidores Neurais</span>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                        <span class="text-green-400 text-sm font-bold">ONLINE</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-300">Firewall Quântico</span>
+                    <div class="flex items-center">
+                        <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                        <span class="text-green-400 text-sm font-bold">ATIVO</span>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-300">Usuários Conectados</span>
+                    <span class="text-cyan-400 text-sm font-bold">1,247</span>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-300">Uptime do Sistema</span>
+                    <span class="text-cyan-400 text-sm font-bold">99.97%</span>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl border border-cyan-500/20">
+                <div class="flex items-center mb-2">
+                    <svg class="w-5 h-5 text-cyan-400 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span class="text-cyan-400 text-sm font-bold">DICA DE SEGURANÇA</span>
+                </div>
+                <p class="text-gray-300 text-xs leading-relaxed">
+                    Use autenticação biométrica para máxima segurança. Seus dados neurais são criptografados com algoritmos quânticos.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Professional Editor Module Variables
+        let editorMode = false;
+        let selectedElements = [];
+        let editorHistory = [];
+        let currentHistoryIndex = -1;
+        let copiedProfile = null;
+
+        // Profile Management System
+        let profiles = {
+            runway: {
+                name: 'RUNWAY ML',
+                image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=80&h=80&fit=crop&crop=center',
+                description: 'CINEMA NEURAL • GEN-3',
+                status: 'RENDERIZANDO',
+                badge: '⚡ ULTRA-HD',
+                url: 'https://runwayml.com',
+                color: 'orange'
+            },
+            chatgpt: {
+                name: 'ChatGPT',
+                image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=80&h=80&fit=crop&crop=center',
+                description: 'GPT-4 OMNI\nCONSCIÊNCIA DIGITAL • o1',
+                status: 'PENSANDO',
+                badge: '🚀 PLUS',
+                url: 'https://chat.openai.com',
+                color: 'green'
+            },
+            gemini: {
+                name: 'Google Gemini',
+                image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=80&h=80&fit=crop&crop=center',
+                description: 'GEMINI ULTRA\nNEXUS QUÂNTICO • 2.0',
+                status: 'COMPUTANDO',
+                badge: '🔬 EXPERIMENTAL',
+                url: 'https://gemini.google.com',
+                color: 'blue'
+            },
+            canva: {
+                name: 'Canva',
+                image: 'https://images.unsplash.com/photo-1561736778-92e52a7769ef?w=80&h=80&fit=crop&crop=center',
+                description: 'CANVA MAGIC\nESTÚDIO CRIATIVO • AI',
+                status: 'CRIANDO',
+                badge: '🎨 PRO',
+                url: 'https://canva.com',
+                color: 'purple'
+            },
+            arena: {
+                name: 'Chatbot Arena',
+                image: 'https://images.unsplash.com/photo-1555255707-c07966088b7b?w=80&h=80&fit=crop&crop=center',
+                description: 'CHATBOT ARENA\nCOLISEU NEURAL • ELO',
+                status: 'LUTANDO',
+                badge: '🏆 RANKING',
+                url: 'https://chat.lmsys.org',
+                color: 'red'
+            },
+            nexus: {
+                name: 'NEXUS PLUS',
+                image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=80&h=80&fit=crop&crop=center',
+                description: 'SLOT INFINITO • ∞',
+                status: 'STANDBY',
+                badge: '🌟 ILIMITADO',
+                url: '',
+                color: 'yellow'
+            }
+        };
+
+        // Professional Editor Functions
+        function toggleEditMode() {
+            editorMode = !editorMode;
+            const editButton = document.getElementById('editButton');
+            const addProfileBtn = document.getElementById('addProfileBtn');
+            
+            if (editorMode) {
+                activateEditorMode();
+                editButton.textContent = 'SAIR EDITOR';
+                editButton.classList.add('bg-red-500', 'hover:bg-red-600');
+                if (addProfileBtn) addProfileBtn.classList.remove('hidden');
+                showNotification('🔧 Modo Editor Profissional Ativado!', 'info');
+                showEditorPanel();
+            } else {
+                deactivateEditorMode();
+                editButton.textContent = 'EDITAR';
+                editButton.classList.remove('bg-red-500', 'hover:bg-red-600');
+                if (addProfileBtn) addProfileBtn.classList.add('hidden');
+                showNotification('✅ Modo Editor Desativado!', 'success');
+                hideEditorPanel();
+            }
+            
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function activateEditorMode() {
+            // Add editor class to dashboard
+            const dashboard = document.getElementById('v11Dashboard');
+            if (dashboard) {
+                dashboard.classList.add('editor-active');
+            }
+            
+            // Add click handlers to profile cards
+            addProfileCardHandlers();
+            
+            // Save current state to history
+            saveToHistory();
+        }
+
+        function deactivateEditorMode() {
+            // Remove editor class
+            const dashboard = document.getElementById('v11Dashboard');
+            if (dashboard) {
+                dashboard.classList.remove('editor-active');
+            }
+            
+            // Clear selections
+            selectedElements = [];
+            document.querySelectorAll('.profile-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Remove editor panel and toolbar
+            hideEditorPanel();
+        }
+
+        function addProfileCardHandlers() {
+            const profileCards = document.querySelectorAll('.profile-card');
+            
+            profileCards.forEach(card => {
+                // Add editor overlay
+                if (!card.querySelector('.editor-overlay')) {
+                    const overlay = document.createElement('div');
+                    overlay.className = 'editor-overlay';
+                    overlay.innerHTML = '✏️ CLIQUE PARA EDITAR';
+                    card.appendChild(overlay);
+                }
+                
+                // Remove existing handlers
+                card.removeEventListener('click', handleProfileCardClick);
+                
+                // Add click handler
+                card.addEventListener('click', handleProfileCardClick);
+            });
+        }
+
+        function handleProfileCardClick(e) {
+            if (editorMode) {
+                e.preventDefault();
+                e.stopPropagation();
+                selectProfileCard(this);
+            }
+        }
+
+        function selectProfileCard(card) {
+            const profileId = card.getAttribute('data-profile-id');
+            
+            // Toggle selection
+            if (selectedElements.includes(profileId)) {
+                selectedElements = selectedElements.filter(id => id !== profileId);
+                card.classList.remove('selected');
+            } else {
+                // Clear previous selections for single selection mode
+                selectedElements.forEach(id => {
+                    const prevCard = document.querySelector(`[data-profile-id="${id}"]`);
+                    if (prevCard) prevCard.classList.remove('selected');
+                });
+                
+                selectedElements = [profileId];
+                card.classList.add('selected');
+            }
+            
+            updateEditorPanel();
+            createSoundWave(card.offsetLeft + card.offsetWidth/2, card.offsetTop + card.offsetHeight/2);
+            
+            if (selectedElements.length > 0) {
+                showNotification(`🎯 Perfil selecionado: ${profiles[profileId]?.name || 'Desconhecido'}`, 'info');
+            }
+        }
+
+        function showEditorPanel() {
+            // Remove existing panel
+            const existingPanel = document.getElementById('editorPanel');
+            if (existingPanel) {
+                existingPanel.remove();
+            }
+            
+            const panel = document.createElement('div');
+            panel.id = 'editorPanel';
+            panel.className = 'editor-panel';
+            panel.innerHTML = `
+                <div class="editor-section">
+                    <h4>🎛️ Painel de Controle</h4>
+                    <div class="space-y-2">
+                        <button onclick="selectAllProfiles()" class="tool-button w-full">SELECIONAR TODOS</button>
+                        <button onclick="deselectAllProfiles()" class="tool-button w-full">LIMPAR SELEÇÃO</button>
+                        <button onclick="duplicateSelected()" class="tool-button w-full">DUPLICAR</button>
+                        <button onclick="deleteSelected()" class="tool-button w-full bg-red-600">EXCLUIR</button>
+                    </div>
+                </div>
+                
+                <div class="editor-section" id="propertiesPanel" style="display: none;">
+                    <h4>⚙️ Propriedades</h4>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="text-cyan-300 text-xs font-bold">NOME</label>
+                            <input type="text" id="editName" class="property-input" placeholder="Nome do perfil">
+                        </div>
+                        
+                        <div>
+                            <label class="text-cyan-300 text-xs font-bold">DESCRIÇÃO</label>
+                            <textarea id="editDescription" class="property-input h-16" placeholder="Descrição..."></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="text-cyan-300 text-xs font-bold">STATUS</label>
+                            <input type="text" id="editStatus" class="property-input" placeholder="Status atual">
+                        </div>
+                        
+                        <div>
+                            <label class="text-cyan-300 text-xs font-bold">BADGE</label>
+                            <input type="text" id="editBadge" class="property-input" placeholder="🚀 BADGE">
+                        </div>
+                        
+                        <div>
+                            <label class="text-cyan-300 text-xs font-bold">URL</label>
+                            <input type="url" id="editUrl" class="property-input" placeholder="https://...">
+                        </div>
+                        
+                        <div>
+                            <label class="text-cyan-300 text-xs font-bold">IMAGEM</label>
+                            <input type="url" id="editImage" class="property-input" placeholder="URL da imagem">
+                        </div>
+                        
+                        <div>
+                            <label class="text-cyan-300 text-xs font-bold">COR DO TEMA</label>
+                            <div class="color-picker">
+                                <div class="color-option bg-cyan-400" data-color="cyan"></div>
+                                <div class="color-option bg-green-400" data-color="green"></div>
+                                <div class="color-option bg-blue-400" data-color="blue"></div>
+                                <div class="color-option bg-purple-400" data-color="purple"></div>
+                                <div class="color-option bg-red-400" data-color="red"></div>
+                                <div class="color-option bg-yellow-400" data-color="yellow"></div>
+                                <div class="color-option bg-orange-400" data-color="orange"></div>
+                                <div class="color-option bg-pink-400" data-color="pink"></div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="applyChanges()" class="neural-button w-full py-2 mt-4">
+                            APLICAR MUDANÇAS
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="editor-section">
+                    <h4>📊 Estatísticas</h4>
+                    <div class="text-xs text-gray-300 space-y-1">
+                        <div>Total de Perfis: <span class="text-cyan-400 font-bold">${Object.keys(profiles).length}</span></div>
+                        <div>Selecionados: <span class="text-green-400 font-bold">${selectedElements.length}</span></div>
+                        <div>Histórico: <span class="text-blue-400 font-bold">${editorHistory.length}</span></div>
+                    </div>
+                </div>
+                
+                <div class="editor-section">
+                    <h4>⏱️ Histórico</h4>
+                    <div class="flex space-x-2">
+                        <button onclick="undoAction()" class="tool-button flex-1" ${currentHistoryIndex <= 0 ? 'disabled' : ''}>
+                            ↶ DESFAZER
+                        </button>
+                        <button onclick="redoAction()" class="tool-button flex-1" ${currentHistoryIndex >= editorHistory.length - 1 ? 'disabled' : ''}>
+                            ↷ REFAZER
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(panel);
+            
+            // Add color picker handlers
+            panel.querySelectorAll('.color-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    panel.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    if (selectedElements.length > 0) {
+                        const color = this.getAttribute('data-color');
+                        updateSelectedProfileColor(color);
+                    }
+                });
+            });
+            
+            // Add real-time input handlers
+            ['editName', 'editDescription', 'editStatus', 'editBadge', 'editUrl', 'editImage'].forEach(inputId => {
+                const input = document.getElementById(inputId);
+                if (input) {
+                    input.addEventListener('input', function() {
+                        if (selectedElements.length > 0) {
+                            updateSelectedProfileProperty(inputId.replace('edit', '').toLowerCase(), this.value);
+                        }
+                    });
+                }
+            });
+            
+            // Show toolbar
+            showEditorToolbar();
+        }
+
+        function showEditorToolbar() {
+            // Remove existing toolbar
+            const existingToolbar = document.getElementById('editorToolbar');
+            if (existingToolbar) {
+                existingToolbar.remove();
+            }
+            
+            const toolbar = document.createElement('div');
+            toolbar.id = 'editorToolbar';
+            toolbar.className = 'editor-toolbar';
+            toolbar.innerHTML = `
+                <div class="flex items-center space-x-3 bg-black bg-opacity-80 backdrop-blur-lg rounded-2xl p-4 border border-cyan-400/30">
+                    <button onclick="addNewProfile()" class="tool-button">
+                        ➕ NOVO
+                    </button>
+                    <button onclick="copySelected()" class="tool-button">
+                        📋 COPIAR
+                    </button>
+                    <button onclick="pasteProfile()" class="tool-button">
+                        📄 COLAR
+                    </button>
+                    <div class="w-px h-8 bg-cyan-400/30"></div>
+                    <button onclick="moveSelectedUp()" class="tool-button">
+                        ⬆️ SUBIR
+                    </button>
+                    <button onclick="moveSelectedDown()" class="tool-button">
+                        ⬇️ DESCER
+                    </button>
+                    <div class="w-px h-8 bg-cyan-400/30"></div>
+                    <button onclick="exportProfiles()" class="tool-button">
+                        💾 EXPORTAR
+                    </button>
+                    <button onclick="importProfiles()" class="tool-button">
+                        📁 IMPORTAR
+                    </button>
+                    <div class="w-px h-8 bg-cyan-400/30"></div>
+                    <button onclick="previewMode()" class="tool-button">
+                        👁️ PREVIEW
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(toolbar);
+        }
+
+        function hideEditorPanel() {
+            const panel = document.getElementById('editorPanel');
+            const toolbar = document.getElementById('editorToolbar');
+            
+            if (panel) panel.remove();
+            if (toolbar) toolbar.remove();
+        }
+
+        function updateEditorPanel() {
+            const propertiesPanel = document.getElementById('propertiesPanel');
+            
+            if (selectedElements.length === 1) {
+                const profileId = selectedElements[0];
+                const profile = profiles[profileId];
+                
+                if (profile && propertiesPanel) {
+                    propertiesPanel.style.display = 'block';
+                    
+                    document.getElementById('editName').value = profile.name || '';
+                    document.getElementById('editDescription').value = profile.description || '';
+                    document.getElementById('editStatus').value = profile.status || '';
+                    document.getElementById('editBadge').value = profile.badge || '';
+                    document.getElementById('editUrl').value = profile.url || '';
+                    document.getElementById('editImage').value = profile.image || '';
+                    
+                    // Update color selection
+                    document.querySelectorAll('.color-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                        if (opt.getAttribute('data-color') === profile.color) {
+                            opt.classList.add('selected');
+                        }
+                    });
+                }
+            } else {
+                if (propertiesPanel) {
+                    propertiesPanel.style.display = 'none';
+                }
+            }
+            
+            // Update statistics
+            const statsSection = document.querySelector('#editorPanel .editor-section:nth-child(3)');
+            if (statsSection) {
+                statsSection.innerHTML = `
+                    <h4>📊 Estatísticas</h4>
+                    <div class="text-xs text-gray-300 space-y-1">
+                        <div>Total de Perfis: <span class="text-cyan-400 font-bold">${Object.keys(profiles).length}</span></div>
+                        <div>Selecionados: <span class="text-green-400 font-bold">${selectedElements.length}</span></div>
+                        <div>Histórico: <span class="text-blue-400 font-bold">${editorHistory.length}</span></div>
+                    </div>
+                `;
+            }
+        }
+
+        // Editor Action Functions
+        function selectAllProfiles() {
+            selectedElements = Object.keys(profiles);
+            document.querySelectorAll('.profile-card').forEach(card => {
+                card.classList.add('selected');
+            });
+            updateEditorPanel();
+            showNotification(`✅ ${selectedElements.length} perfis selecionados!`, 'success');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function deselectAllProfiles() {
+            selectedElements = [];
+            document.querySelectorAll('.profile-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            updateEditorPanel();
+            showNotification('🔄 Seleção limpa!', 'info');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function duplicateSelected() {
+            if (selectedElements.length === 0) {
+                showNotification('⚠️ Nenhum perfil selecionado!', 'warning');
+                return;
+            }
+
+            selectedElements.forEach(profileId => {
+                const profile = profiles[profileId];
+                if (profile) {
+                    const newId = 'copy_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                    profiles[newId] = {
+                        ...profile,
+                        name: profile.name + ' (Cópia)'
+                    };
+                }
+            });
+
+            saveToHistory();
+            updateProfilesGrid();
+            addProfileCardHandlers();
+            showNotification(`📋 ${selectedElements.length} perfil(s) duplicado(s)!`, 'success');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function deleteSelected() {
+            if (selectedElements.length === 0) {
+                showNotification('⚠️ Nenhum perfil selecionado!', 'warning');
+                return;
+            }
+
+            if (confirm(`Tem certeza que deseja excluir ${selectedElements.length} perfil(s)?`)) {
+                selectedElements.forEach(profileId => {
+                    delete profiles[profileId];
+                });
+
+                selectedElements = [];
+                saveToHistory();
+                updateProfilesGrid();
+                addProfileCardHandlers();
+                updateEditorPanel();
+                showNotification('🗑️ Perfis excluídos com sucesso!', 'success');
+                createSoundWave(window.innerWidth/2, window.innerHeight/2);
+            }
+        }
+
+        function updateSelectedProfileProperty(property, value) {
+            if (selectedElements.length === 0) return;
+
+            selectedElements.forEach(profileId => {
+                if (profiles[profileId]) {
+                    profiles[profileId][property] = value;
+                }
+            });
+
+            updateProfilesGrid();
+            addProfileCardHandlers();
+        }
+
+        function updateSelectedProfileColor(color) {
+            updateSelectedProfileProperty('color', color);
+            showNotification(`🎨 Cor alterada para ${color}!`, 'info');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function applyChanges() {
+            if (selectedElements.length === 0) {
+                showNotification('⚠️ Nenhum perfil selecionado!', 'warning');
+                return;
+            }
+
+            const name = document.getElementById('editName').value;
+            const description = document.getElementById('editDescription').value;
+            const status = document.getElementById('editStatus').value;
+            const badge = document.getElementById('editBadge').value;
+            const url = document.getElementById('editUrl').value;
+            const image = document.getElementById('editImage').value;
+
+            selectedElements.forEach(profileId => {
+                if (profiles[profileId]) {
+                    if (name) profiles[profileId].name = name;
+                    if (description) profiles[profileId].description = description;
+                    if (status) profiles[profileId].status = status;
+                    if (badge) profiles[profileId].badge = badge;
+                    if (url) profiles[profileId].url = url;
+                    if (image) profiles[profileId].image = image;
+                }
+            });
+
+            saveToHistory();
+            updateProfilesGrid();
+            addProfileCardHandlers();
+            showNotification('✅ Mudanças aplicadas com sucesso!', 'success');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function addNewProfile() {
+            const newId = 'profile_' + Date.now();
+            profiles[newId] = {
+                name: 'Novo Perfil',
+                image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=80&h=80&fit=crop&crop=center',
+                description: 'Descrição do novo perfil',
+                status: 'ATIVO',
+                badge: '🆕 NOVO',
+                url: '',
+                color: 'cyan'
+            };
+
+            saveToHistory();
+            updateProfilesGrid();
+            addProfileCardHandlers();
+            showNotification('➕ Novo perfil criado!', 'success');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function copySelected() {
+            if (selectedElements.length !== 1) {
+                showNotification('⚠️ Selecione apenas um perfil para copiar!', 'warning');
+                return;
+            }
+
+            copiedProfile = { ...profiles[selectedElements[0]] };
+            showNotification('📋 Perfil copiado para a área de transferência!', 'success');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function pasteProfile() {
+            if (!copiedProfile) {
+                showNotification('⚠️ Nenhum perfil na área de transferência!', 'warning');
+                return;
+            }
+
+            const newId = 'paste_' + Date.now();
+            profiles[newId] = {
+                ...copiedProfile,
+                name: copiedProfile.name + ' (Colado)'
+            };
+
+            saveToHistory();
+            updateProfilesGrid();
+            addProfileCardHandlers();
+            showNotification('📄 Perfil colado com sucesso!', 'success');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function moveSelectedUp() {
+            if (selectedElements.length === 0) {
+                showNotification('⚠️ Nenhum perfil selecionado!', 'warning');
+                return;
+            }
+            showNotification('⬆️ Perfis movidos para cima!', 'info');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function moveSelectedDown() {
+            if (selectedElements.length === 0) {
+                showNotification('⚠️ Nenhum perfil selecionado!', 'warning');
+                return;
+            }
+            showNotification('⬇️ Perfis movidos para baixo!', 'info');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function exportProfiles() {
+            const dataStr = JSON.stringify(profiles, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'nexus_profiles_' + new Date().toISOString().slice(0, 10) + '.json';
+            link.click();
+            
+            URL.revokeObjectURL(url);
+            showNotification('💾 Perfis exportados com sucesso!', 'success');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function importProfiles() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const importedProfiles = JSON.parse(e.target.result);
+                        
+                        // Merge with existing profiles
+                        Object.assign(profiles, importedProfiles);
+                        
+                        saveToHistory();
+                        updateProfilesGrid();
+                        addProfileCardHandlers();
+                        showNotification('📁 Perfis importados com sucesso!', 'success');
+                        createSoundWave(window.innerWidth/2, window.innerHeight/2);
+                    } catch (error) {
+                        showNotification('❌ Erro ao importar arquivo!', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            };
+            
+            input.click();
+        }
+
+        function previewMode() {
+            if (editorMode) {
+                deactivateEditorMode();
+                showNotification('👁️ Modo Preview ativado!', 'info');
+            } else {
+                activateEditorMode();
+                showNotification('🔧 Modo Editor ativado!', 'info');
+            }
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function saveToHistory() {
+            // Remove future history if we're not at the end
+            if (currentHistoryIndex < editorHistory.length - 1) {
+                editorHistory = editorHistory.slice(0, currentHistoryIndex + 1);
+            }
+            
+            // Add current state to history
+            editorHistory.push(JSON.parse(JSON.stringify(profiles)));
+            currentHistoryIndex = editorHistory.length - 1;
+            
+            // Limit history size
+            if (editorHistory.length > 50) {
+                editorHistory.shift();
+                currentHistoryIndex--;
+            }
+        }
+
+        function undoAction() {
+            if (currentHistoryIndex > 0) {
+                currentHistoryIndex--;
+                profiles = JSON.parse(JSON.stringify(editorHistory[currentHistoryIndex]));
+                updateProfilesGrid();
+                addProfileCardHandlers();
+                updateEditorPanel();
+                showNotification('↶ Ação desfeita!', 'info');
+                createSoundWave(window.innerWidth/2, window.innerHeight/2);
+            }
+        }
+
+        function redoAction() {
+            if (currentHistoryIndex < editorHistory.length - 1) {
+                currentHistoryIndex++;
+                profiles = JSON.parse(JSON.stringify(editorHistory[currentHistoryIndex]));
+                updateProfilesGrid();
+                addProfileCardHandlers();
+                updateEditorPanel();
+                showNotification('↷ Ação refeita!', 'info');
+                createSoundWave(window.innerWidth/2, window.innerHeight/2);
+            }
+        }
+
+        // Matrix rain effect
+        function createMatrixRain() {
+            const container = document.getElementById('matrix-container');
+            const numberOfLines = 30;
+            
+            for (let i = 0; i < numberOfLines; i++) {
+                const line = document.createElement('div');
+                line.className = 'matrix-line';
+                line.style.left = Math.random() * 100 + '%';
+                line.style.animationDelay = Math.random() * 4 + 's';
+                line.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                container.appendChild(line);
+            }
+        }
+
+        // Audio Visual Effects
+        function activateAudioEffects() {
+            const visualizer = document.getElementById('audioVisualizer');
+            const frequencyDisplay = document.getElementById('frequencyDisplay');
+            
+            visualizer.classList.add('active');
+            frequencyDisplay.classList.add('active');
+            
+            // Simulate changing frequency values
+            setInterval(() => {
+                const freq = (Math.random() * 1000 + 200).toFixed(1);
+                const amp = (Math.random() * -30 - 5).toFixed(1);
+                const modes = ['NEURAL', 'QUANTUM', 'MATRIX', 'CYBER'];
+                const mode = modes[Math.floor(Math.random() * modes.length)];
+                
+                document.getElementById('freqValue').textContent = freq + ' Hz';
+                document.getElementById('ampValue').textContent = amp + ' dB';
+                document.getElementById('modeValue').textContent = mode;
+            }, 500);
+        }
+
+        function deactivateAudioEffects() {
+            const visualizer = document.getElementById('audioVisualizer');
+            const frequencyDisplay = document.getElementById('frequencyDisplay');
+            
+            visualizer.classList.remove('active');
+            frequencyDisplay.classList.remove('active');
+        }
+
+        function createSoundWave(x, y) {
+            const waveContainer = document.getElementById('waveContainer');
+            const wave = document.createElement('div');
+            wave.className = 'wave-circle';
+            wave.style.left = x + 'px';
+            wave.style.top = y + 'px';
+            wave.style.marginLeft = '-150px';
+            wave.style.marginTop = '-150px';
+            
+            waveContainer.appendChild(wave);
+            
+            setTimeout(() => {
+                wave.remove();
+            }, 2000);
+        }
+
+        // Enhanced input effects with sound simulation
+        document.querySelectorAll('.neural-input-enhanced').forEach(input => {
+            input.addEventListener('focus', function(e) {
+                activateAudioEffects();
+                createSoundWave(e.target.offsetLeft + e.target.offsetWidth/2, e.target.offsetTop + e.target.offsetHeight/2);
+                this.parentElement.classList.add('scale-105');
+            });
+            
+            input.addEventListener('blur', function() {
                 deactivateAudioEffects();
+                this.parentElement.classList.remove('scale-105');
+            });
+            
+            input.addEventListener('input', function(e) {
+                // Create mini sound waves on typing
+                const rect = e.target.getBoundingClientRect();
+                createSoundWave(rect.left + rect.width/2, rect.top + rect.height/2);
+            });
+        });
+
+        // Enhanced button effects
+        document.querySelector('.neural-button-enhanced').addEventListener('mouseenter', function(e) {
+            activateAudioEffects();
+            const rect = e.target.getBoundingClientRect();
+            createSoundWave(rect.left + rect.width/2, rect.top + rect.height/2);
+        });
+
+        document.querySelector('.neural-button-enhanced').addEventListener('mouseleave', function() {
+            deactivateAudioEffects();
+        });
+
+        // Login form handling with enhanced audio effects
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                showNotification('⚠️ Credenciais incompletas detectadas!', 'warning');
+                return;
+            }
+            
+            // Validate specific credentials
+            if (username.toLowerCase() !== 'victor' || password !== '96439129') {
+                showNotification('🚫 Acesso negado! Credenciais inválidas.', 'error');
+                
+                // Create error sound waves
+                for(let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        const rect = e.target.getBoundingClientRect();
+                        createSoundWave(rect.left + rect.width/2, rect.top + rect.height/2);
+                    }, i * 150);
+                }
+                return;
+            }
+            
+            // Activate loading sound effect
+            const loadingEffect = document.getElementById('loadingSoundEffect');
+            loadingEffect.classList.add('active');
+            activateAudioEffects();
+            
+            // Show loading state
+            const button = e.target.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = `
+                <div class="flex items-center justify-center">
+                    <svg class="w-6 h-6 mr-3 animate-spin" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                    </svg>
+                    AUTENTICANDO...
+                </div>
+            `;
+            button.disabled = true;
+            
+            // Create multiple sound waves during loading
+            const waveInterval = setInterval(() => {
+                const rect = button.getBoundingClientRect();
+                createSoundWave(rect.left + rect.width/2, rect.top + rect.height/2);
+            }, 300);
+            
+            // Simulate authentication process
+            setTimeout(() => {
+                clearInterval(waveInterval);
+                loadingEffect.classList.remove('active');
+                
+                showNotification('✅ Credenciais validadas! Bem-vindo ao NEXUS AI', 'success');
+                
+                // Create success sound waves
+                for(let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const rect = button.getBoundingClientRect();
+                        createSoundWave(rect.left + rect.width/2, rect.top + rect.height/2);
+                    }, i * 200);
+                }
+                
+                setTimeout(() => {
+                    deactivateAudioEffects();
+                    // Redirect to management panel
+                    showDashboard();
+                }, 2000);
+            }, 3000);
+        });
+
+        // Enhanced notification system
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            const colors = {
+                success: 'from-green-500 to-emerald-600',
+                warning: 'from-yellow-500 to-orange-600',
+                error: 'from-red-500 to-pink-600',
+                info: 'from-cyan-500 to-blue-600'
+            };
+            
+            notification.className = `fixed top-8 right-8 p-6 rounded-2xl text-white z-50 bg-gradient-to-r ${colors[type]} backdrop-blur-lg border border-white/20 transform transition-all duration-500 translate-x-full max-w-sm`;
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-white rounded-full mr-3 animate-pulse"></div>
+                    <span class="font-bold tracking-wide text-sm">${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Create sound wave for notification
+            setTimeout(() => {
+                const rect = notification.getBoundingClientRect();
+                createSoundWave(rect.left + rect.width/2, rect.top + rect.height/2);
+            }, 100);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => notification.remove(), 500);
+            }, 4000);
+        }
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            createMatrixRain();
+            
+            // Show welcome message with sound effect
+            setTimeout(() => {
+                showNotification('🚀 Sistema NEXUS AI inicializado com sucesso!', 'info');
+                activateAudioEffects();
+                
+                // Create welcome sound waves
+                for(let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        createSoundWave(window.innerWidth/2, window.innerHeight/2);
+                    }, i * 500);
+                }
+                
+                setTimeout(() => {
+                    deactivateAudioEffects();
+                }, 2000);
+            }, 1000);
+        });
+
+        // Keyboard shortcuts with sound effects
+        document.addEventListener('keydown', function(e) {
+            // Alt + Enter to submit form
+            if (e.altKey && e.key === 'Enter') {
+                createSoundWave(window.innerWidth/2, window.innerHeight/2);
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
+            
+            // Escape to clear form
+            if (e.key === 'Escape') {
+                createSoundWave(window.innerWidth/2, window.innerHeight/2);
+                document.getElementById('loginForm').reset();
+                showNotification('🔄 Formulário limpo!', 'info');
+            }
+        });
+
+        // Add click sound effects to all interactive elements
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('button, a, input')) {
+                const rect = e.target.getBoundingClientRect();
+                createSoundWave(rect.left + rect.width/2, rect.top + rect.height/2);
+            }
+        });
+
+        // Dashboard functionality - Load V11 Dashboard
+        function showDashboard() {
+            showNotification('🚀 Carregando Painel de Gerenciamento V11...', 'success');
+            
+            // Create multiple success sound waves
+            for(let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    createSoundWave(
+                        Math.random() * window.innerWidth, 
+                        Math.random() * window.innerHeight
+                    );
+                }, i * 200);
+            }
+            
+            // Activate audio effects during transition
+            activateAudioEffects();
+            
+            // Create transition overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'fixed inset-0 z-50 flex items-center justify-center';
+            overlay.style.background = 'linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(15, 15, 35, 0.98) 50%, rgba(0, 0, 0, 0.95) 100%)';
+            overlay.style.backdropFilter = 'blur(20px)';
+            overlay.innerHTML = `
+                <div class="text-center">
+                    <div class="neon-border rounded-full p-8 mb-8 hologram-effect inline-block">
+                        <svg class="w-24 h-24 text-cyan-400 animate-spin" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-4xl font-black text-hologram mb-4 tracking-wider">
+                        NEXUS AI V11
+                    </h2>
+                    <p class="text-cyan-300 text-xl font-bold tracking-wide">
+                        Inicializando Sistema Neural Avançado...
+                    </p>
+                    <div class="mt-8 flex justify-center space-x-2">
+                        <div class="w-3 h-3 bg-cyan-400 rounded-full animate-bounce"></div>
+                        <div class="w-3 h-3 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                        <div class="w-3 h-3 bg-cyan-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(overlay);
+            
+            // Load V11 Dashboard after transition
+            setTimeout(() => {
+                overlay.remove();
+                loadV11Dashboard();
+            }, 3000);
+        }
+
+        // Load the specific NEXUS AI Dashboard version
+        function loadV11Dashboard() {
+            // Hide login form
+            document.querySelector('.min-h-full').style.display = 'none';
+            
+            // Create specific dashboard
+            const dashboard = document.createElement('div');
+            dashboard.id = 'v11Dashboard';
+            dashboard.className = 'min-h-screen relative z-10 p-6 overflow-y-auto';
+            dashboard.innerHTML = `
+                <!-- Header -->
+                <div class="text-center mb-8">
+                    <div class="neon-border rounded-full p-4 mb-6 hologram-effect inline-block">
+                        <svg class="w-12 h-12 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h1 class="text-5xl font-black text-hologram tracking-wider mb-2">NEXUS AI</h1>
+                    <p class="text-cyan-300 text-lg font-bold tracking-wide" id="systemTime">SISTEMA OPERACIONAL • 20:59:11</p>
+                </div>
+                
+                <!-- Control Buttons -->
+                <div class="flex justify-center space-x-4 mb-8">
+                    <button onclick="showDataAnalytics()" class="neural-button px-6 py-3 rounded-lg font-bold text-sm">DADOS</button>
+                    <button onclick="toggleEditMode()" id="editButton" class="neural-button px-6 py-3 rounded-lg font-bold text-sm">EDITAR</button>
+                    <button onclick="logout()" class="neural-button px-6 py-3 rounded-lg font-bold text-sm">LOGOFF</button>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="luxury-card p-4 rounded-xl text-center">
+                        <h3 class="text-cyan-400 font-bold text-sm mb-2">PERFIS ATIVOS</h3>
+                        <div class="text-4xl font-black text-white mb-1">06</div>
+                        <div class="text-green-400 text-xs font-bold">+100% Operacional</div>
+                    </div>
+
+                    <div class="luxury-card p-4 rounded-xl text-center">
+                        <h3 class="text-cyan-400 font-bold text-sm mb-2">VELOCIDADE</h3>
+                        <div class="text-2xl font-black text-white mb-1">--</div>
+                        <div class="text-gray-400 text-xs font-bold">Mbps Download</div>
+                    </div>
+
+                    <div class="luxury-card p-4 rounded-xl text-center">
+                        <h3 class="text-cyan-400 font-bold text-sm mb-2">UPLOAD</h3>
+                        <div class="text-2xl font-black text-white mb-1">--</div>
+                        <div class="text-gray-400 text-xs font-bold">Mbps Upload</div>
+                    </div>
+
+                    <div class="luxury-card p-4 rounded-xl text-center">
+                        <h3 class="text-cyan-400 font-bold text-sm mb-2">LATÊNCIA</h3>
+                        <div class="text-2xl font-black text-white mb-1">--</div>
+                        <div class="text-gray-400 text-xs font-bold">ms Ping</div>
+                    </div>
+                </div>
+
+                <!-- AI Profiles Section -->
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-black text-cyan-400 tracking-wider">PERFIS DE INTELIGÊNCIA ARTIFICIAL</h2>
+                        <button onclick="addNewProfile()" id="addProfileBtn" class="neural-button px-4 py-2 rounded-lg font-bold text-sm hidden">
+                            + NOVO PERFIL
+                        </button>
+                    </div>
+                    
+                    <div id="profilesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-1000 ease-in-out">
+                        <!-- Profiles will be dynamically generated here -->
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="mt-8 text-center">
+                    <p class="text-gray-400 text-xs mb-2">
+                        NEXUS AI CONTROL CENTER • v3.0 QUANTUM EDITION • SISTEMA ULTRA-SEGURO
+                    </p>
+                    <p class="text-gray-500 text-xs">
+                        Powered by Neural Quantum Processing • Encrypted End-to-End
+                    </p>
+                </div>
+            `;
+            
+            document.body.appendChild(dashboard);
+            
+            // Initialize profiles grid
+            updateProfilesGrid();
+            
+            // Start real-time clock
+            updateSystemTime();
+            setInterval(updateSystemTime, 1000);
+            
+            // Add dashboard sound effects
+            setTimeout(() => {
+                activateAudioEffects();
+                createSoundWave(window.innerWidth/2, window.innerHeight/2);
+                showNotification('🚀 Painel NEXUS AI carregado com sucesso!', 'success');
+            }, 500);
+        }
+
+        // Real-time clock function
+        function updateSystemTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('pt-BR', { 
+                hour12: false,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            const timeElement = document.getElementById('systemTime');
+            if (timeElement) {
+                timeElement.textContent = `SISTEMA OPERACIONAL • ${timeString}`;
+            }
+        }
+
+        function getColorClasses(color) {
+            const colorMap = {
+                cyan: { border: 'border-cyan-400', text: 'text-cyan-400', bg: 'bg-cyan-400' },
+                green: { border: 'border-green-400', text: 'text-green-400', bg: 'bg-green-400' },
+                blue: { border: 'border-blue-400', text: 'text-blue-400', bg: 'bg-blue-400' },
+                purple: { border: 'border-purple-400', text: 'text-purple-400', bg: 'bg-purple-400' },
+                red: { border: 'border-red-400', text: 'text-red-400', bg: 'bg-red-400' },
+                yellow: { border: 'border-yellow-400', text: 'text-yellow-400', bg: 'bg-yellow-400' },
+                orange: { border: 'border-orange-400', text: 'text-orange-400', bg: 'bg-orange-400' },
+                pink: { border: 'border-pink-400', text: 'text-pink-400', bg: 'bg-pink-400' }
+            };
+            return colorMap[color] || colorMap.cyan;
+        }
+
+        function createProfileCard(profileId, profile) {
+            const colors = getColorClasses(profile.color);
+            const hasUrl = profile.url && profile.url.trim() !== '';
+            
+            return `
+                <div class="luxury-card p-6 rounded-xl profile-card relative" data-profile-id="${profileId}">
+                    <div class="profile-image mb-4 flex justify-center">
+                        <img src="${profile.image}" 
+                             alt="${profile.name}" 
+                             class="w-16 h-16 rounded-full object-cover border-2 ${colors.border}"
+                             onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=80&h=80&fit=crop&crop=center'; this.alt='Imagem não encontrada';">
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-white font-black text-lg">${profile.name}</h3>
+                        <div class="w-3 h-3 ${colors.bg} rounded-full animate-pulse"></div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-3">${profile.description.replace(/\n/g, '<br>')}</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="${colors.text} font-bold text-sm">${profile.status}</span>
+                        <span class="${colors.text} text-xs">${profile.badge}</span>
+                    </div>
+                    ${hasUrl ? `
+                        <button onclick="window.open('${profile.url}', '_blank', 'noopener,noreferrer')" 
+                                class="neural-button w-full py-2 rounded-lg font-bold text-sm">
+                            ACESSAR
+                        </button>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        function updateProfilesGrid() {
+            const grid = document.getElementById('profilesGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            
+            Object.keys(profiles).forEach(profileId => {
+                const profileCard = document.createElement('div');
+                profileCard.innerHTML = createProfileCard(profileId, profiles[profileId]);
+                grid.appendChild(profileCard.firstElementChild);
+            });
+            
+            // Re-add handlers if in editor mode
+            if (editorMode) {
+                addProfileCardHandlers();
+            }
+        }
+
+        // Data Analytics Function
+        function showDataAnalytics() {
+            showNotification('📊 Carregando Analytics Neurais...', 'info');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+            
+            // Create analytics overlay
+            const analyticsOverlay = document.createElement('div');
+            analyticsOverlay.id = 'analyticsOverlay';
+            analyticsOverlay.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
+            analyticsOverlay.style.background = 'rgba(0, 0, 0, 0.95)';
+            analyticsOverlay.style.backdropFilter = 'blur(20px)';
+            
+            analyticsOverlay.innerHTML = `
+                <div class="luxury-card w-full max-w-6xl max-h-[90vh] overflow-y-auto p-8 rounded-2xl">
+                    <div class="flex justify-between items-center mb-8">
+                        <h2 class="text-3xl font-black text-hologram tracking-wider">ANALYTICS NEURAIS</h2>
+                        <button onclick="closeAnalytics()" class="neural-button px-4 py-2 rounded-lg font-bold text-sm bg-red-600 hover:bg-red-700">
+                            ✕ FECHAR
+                        </button>
+                    </div>
+                    
+                    <!-- Real-time Stats -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div class="glass-morphism p-6 rounded-xl text-center">
+                            <h3 class="text-cyan-400 font-bold text-sm mb-2">CPU NEURAL</h3>
+                            <div class="text-4xl font-black text-white mb-2" id="cpuUsage">67%</div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-cyan-400 h-2 rounded-full transition-all duration-1000" style="width: 67%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-morphism p-6 rounded-xl text-center">
+                            <h3 class="text-green-400 font-bold text-sm mb-2">MEMÓRIA RAM</h3>
+                            <div class="text-4xl font-black text-white mb-2" id="ramUsage">42%</div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-green-400 h-2 rounded-full transition-all duration-1000" style="width: 42%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-morphism p-6 rounded-xl text-center">
+                            <h3 class="text-purple-400 font-bold text-sm mb-2">REDE NEURAL</h3>
+                            <div class="text-4xl font-black text-white mb-2" id="networkUsage">89%</div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-purple-400 h-2 rounded-full transition-all duration-1000" style="width: 89%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-morphism p-6 rounded-xl text-center">
+                            <h3 class="text-yellow-400 font-bold text-sm mb-2">QUANTUM CORE</h3>
+                            <div class="text-4xl font-black text-white mb-2" id="quantumUsage">95%</div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-yellow-400 h-2 rounded-full transition-all duration-1000" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Log -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="glass-morphism p-6 rounded-xl">
+                            <h3 class="text-cyan-400 font-bold text-lg mb-4">📈 ATIVIDADE EM TEMPO REAL</h3>
+                            <div class="space-y-3 max-h-64 overflow-y-auto" id="activityLog">
+                                <div class="flex items-center text-sm">
+                                    <div class="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+                                    <span class="text-gray-300">[${new Date().toLocaleTimeString()}] ChatGPT processando consulta neural</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-2 h-2 bg-blue-400 rounded-full mr-3 animate-pulse"></div>
+                                    <span class="text-gray-300">[${new Date().toLocaleTimeString()}] Gemini analisando dados quânticos</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-2 h-2 bg-purple-400 rounded-full mr-3 animate-pulse"></div>
+                                    <span class="text-gray-300">[${new Date().toLocaleTimeString()}] Canva renderizando design neural</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-2 h-2 bg-orange-400 rounded-full mr-3 animate-pulse"></div>
+                                    <span class="text-gray-300">[${new Date().toLocaleTimeString()}] Runway processando vídeo 4K</span>
+                                </div>
+                                <div class="flex items-center text-sm">
+                                    <div class="w-2 h-2 bg-red-400 rounded-full mr-3 animate-pulse"></div>
+                                    <span class="text-gray-300">[${new Date().toLocaleTimeString()}] Arena executando batalha neural</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-morphism p-6 rounded-xl">
+                            <h3 class="text-cyan-400 font-bold text-lg mb-4">🔥 PERFORMANCE METRICS</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300 text-sm">Requests/Segundo</span>
+                                    <span class="text-cyan-400 font-bold" id="requestsPerSec">1,247</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300 text-sm">Latência Média</span>
+                                    <span class="text-green-400 font-bold" id="avgLatency">12ms</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300 text-sm">Uptime Sistema</span>
+                                    <span class="text-blue-400 font-bold" id="systemUptime">99.97%</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300 text-sm">Conexões Ativas</span>
+                                    <span class="text-purple-400 font-bold" id="activeConnections">8,432</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300 text-sm">Dados Processados</span>
+                                    <span class="text-yellow-400 font-bold" id="dataProcessed">2.4 TB</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-300 text-sm">Temperatura CPU</span>
+                                    <span class="text-orange-400 font-bold" id="cpuTemp">42°C</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Control Actions -->
+                    <div class="mt-8 flex justify-center space-x-4">
+                        <button onclick="exportAnalytics()" class="neural-button px-6 py-3 rounded-lg font-bold text-sm">
+                            💾 EXPORTAR DADOS
+                        </button>
+                        <button onclick="refreshAnalytics()" class="neural-button px-6 py-3 rounded-lg font-bold text-sm">
+                            🔄 ATUALIZAR
+                        </button>
+                        <button onclick="resetMetrics()" class="neural-button px-6 py-3 rounded-lg font-bold text-sm bg-yellow-600 hover:bg-yellow-700">
+                            ⚡ RESET MÉTRICAS
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(analyticsOverlay);
+            
+            // Start real-time updates
+            startAnalyticsUpdates();
+            
+            // Add sound effects
+            activateAudioEffects();
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function closeAnalytics() {
+            const overlay = document.getElementById('analyticsOverlay');
+            if (overlay) {
+                overlay.remove();
+                stopAnalyticsUpdates();
+                deactivateAudioEffects();
+                showNotification('📊 Analytics fechado!', 'info');
+                createSoundWave(window.innerWidth/2, window.innerHeight/2);
+            }
+        }
+
+        let analyticsInterval;
+
+        function startAnalyticsUpdates() {
+            analyticsInterval = setInterval(() => {
+                // Update CPU usage
+                const cpuUsage = Math.floor(Math.random() * 40) + 50;
+                const cpuElement = document.getElementById('cpuUsage');
+                if (cpuElement) {
+                    cpuElement.textContent = cpuUsage + '%';
+                    const cpuBar = cpuElement.parentElement.querySelector('.bg-cyan-400');
+                    if (cpuBar) cpuBar.style.width = cpuUsage + '%';
+                }
+
+                // Update RAM usage
+                const ramUsage = Math.floor(Math.random() * 30) + 30;
+                const ramElement = document.getElementById('ramUsage');
+                if (ramElement) {
+                    ramElement.textContent = ramUsage + '%';
+                    const ramBar = ramElement.parentElement.querySelector('.bg-green-400');
+                    if (ramBar) ramBar.style.width = ramUsage + '%';
+                }
+
+                // Update Network usage
+                const networkUsage = Math.floor(Math.random() * 20) + 80;
+                const networkElement = document.getElementById('networkUsage');
+                if (networkElement) {
+                    networkElement.textContent = networkUsage + '%';
+                    const networkBar = networkElement.parentElement.querySelector('.bg-purple-400');
+                    if (networkBar) networkBar.style.width = networkUsage + '%';
+                }
+
+                // Update Quantum usage
+                const quantumUsage = Math.floor(Math.random() * 10) + 90;
+                const quantumElement = document.getElementById('quantumUsage');
+                if (quantumElement) {
+                    quantumElement.textContent = quantumUsage + '%';
+                    const quantumBar = quantumElement.parentElement.querySelector('.bg-yellow-400');
+                    if (quantumBar) quantumBar.style.width = quantumUsage + '%';
+                }
+
+                // Update performance metrics
+                const requestsElement = document.getElementById('requestsPerSec');
+                if (requestsElement) {
+                    requestsElement.textContent = (Math.floor(Math.random() * 500) + 1000).toLocaleString();
+                }
+
+                const latencyElement = document.getElementById('avgLatency');
+                if (latencyElement) {
+                    latencyElement.textContent = (Math.floor(Math.random() * 20) + 5) + 'ms';
+                }
+
+                const connectionsElement = document.getElementById('activeConnections');
+                if (connectionsElement) {
+                    connectionsElement.textContent = (Math.floor(Math.random() * 2000) + 7000).toLocaleString();
+                }
+
+                const tempElement = document.getElementById('cpuTemp');
+                if (tempElement) {
+                    tempElement.textContent = (Math.floor(Math.random() * 15) + 35) + '°C';
+                }
+
+                // Add new activity log entry
+                addActivityLogEntry();
+            }, 2000);
+        }
+
+        function stopAnalyticsUpdates() {
+            if (analyticsInterval) {
+                clearInterval(analyticsInterval);
+                analyticsInterval = null;
+            }
+        }
+
+        function addActivityLogEntry() {
+            const activityLog = document.getElementById('activityLog');
+            if (!activityLog) return;
+
+            const activities = [
+                'Sistema neural otimizado automaticamente',
+                'Backup quântico realizado com sucesso',
+                'Firewall atualizado para versão 3.2.1',
+                'Cache neural limpo e reorganizado',
+                'Conexão segura estabelecida com servidor',
+                'Algoritmo de IA aprimorado dinamicamente',
+                'Dados criptografados e armazenados',
+                'Performance do sistema otimizada',
+                'Monitoramento de segurança ativado',
+                'Sincronização neural completada'
+            ];
+
+            const colors = ['green', 'blue', 'purple', 'cyan', 'yellow', 'orange'];
+            const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+            const newEntry = document.createElement('div');
+            newEntry.className = 'flex items-center text-sm';
+            newEntry.innerHTML = `
+                <div class="w-2 h-2 bg-${randomColor}-400 rounded-full mr-3 animate-pulse"></div>
+                <span class="text-gray-300">[${new Date().toLocaleTimeString()}] ${randomActivity}</span>
+            `;
+
+            activityLog.insertBefore(newEntry, activityLog.firstChild);
+
+            // Keep only last 10 entries
+            while (activityLog.children.length > 10) {
+                activityLog.removeChild(activityLog.lastChild);
+            }
+        }
+
+        function exportAnalytics() {
+            const analyticsData = {
+                timestamp: new Date().toISOString(),
+                cpu: document.getElementById('cpuUsage')?.textContent || '0%',
+                ram: document.getElementById('ramUsage')?.textContent || '0%',
+                network: document.getElementById('networkUsage')?.textContent || '0%',
+                quantum: document.getElementById('quantumUsage')?.textContent || '0%',
+                requestsPerSec: document.getElementById('requestsPerSec')?.textContent || '0',
+                avgLatency: document.getElementById('avgLatency')?.textContent || '0ms',
+                activeConnections: document.getElementById('activeConnections')?.textContent || '0',
+                cpuTemp: document.getElementById('cpuTemp')?.textContent || '0°C'
+            };
+
+            const dataStr = JSON.stringify(analyticsData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'nexus_analytics_' + new Date().toISOString().slice(0, 10) + '.json';
+            link.click();
+            
+            URL.revokeObjectURL(url);
+            showNotification('💾 Analytics exportado com sucesso!', 'success');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function refreshAnalytics() {
+            showNotification('🔄 Atualizando métricas...', 'info');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+            
+            // Force immediate update
+            if (analyticsInterval) {
+                clearInterval(analyticsInterval);
+                startAnalyticsUpdates();
+            }
+        }
+
+        function resetMetrics() {
+            if (confirm('Tem certeza que deseja resetar todas as métricas?')) {
+                // Reset all values to base levels
+                const cpuElement = document.getElementById('cpuUsage');
+                if (cpuElement) {
+                    cpuElement.textContent = '25%';
+                    const cpuBar = cpuElement.parentElement.querySelector('.bg-cyan-400');
+                    if (cpuBar) cpuBar.style.width = '25%';
+                }
+
+                const ramElement = document.getElementById('ramUsage');
+                if (ramElement) {
+                    ramElement.textContent = '15%';
+                    const ramBar = ramElement.parentElement.querySelector('.bg-green-400');
+                    if (ramBar) ramBar.style.width = '15%';
+                }
+
+                const networkElement = document.getElementById('networkUsage');
+                if (networkElement) {
+                    networkElement.textContent = '60%';
+                    const networkBar = networkElement.parentElement.querySelector('.bg-purple-400');
+                    if (networkBar) networkBar.style.width = '60%';
+                }
+
+                const quantumElement = document.getElementById('quantumUsage');
+                if (quantumElement) {
+                    quantumElement.textContent = '85%';
+                    const quantumBar = quantumElement.parentElement.querySelector('.bg-yellow-400');
+                    if (quantumBar) quantumBar.style.width = '85%';
+                }
+
+                // Clear activity log
+                const activityLog = document.getElementById('activityLog');
+                if (activityLog) {
+                    activityLog.innerHTML = `
+                        <div class="flex items-center text-sm">
+                            <div class="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+                            <span class="text-gray-300">[${new Date().toLocaleTimeString()}] Sistema resetado com sucesso</span>
+                        </div>
+                    `;
+                }
+
+                showNotification('⚡ Métricas resetadas com sucesso!', 'success');
+                createSoundWave(window.innerWidth/2, window.innerHeight/2);
+            }
+        }
+
+        function logout() {
+            showNotification('👋 Desconectando do NEXUS AI...', 'info');
+            createSoundWave(window.innerWidth/2, window.innerHeight/2);
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98b1a9da31e35cb7',t:'MTc1OTg4NDgzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
             }, 4000);
         }
 
